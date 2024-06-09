@@ -11,17 +11,11 @@ export default async function handler(req, res) {
         format: 'best',
       });
 
-      // Mengonversi objek JSON menjadi string sebelum mengirimkannya
-      const responseBody = JSON.stringify({ downloadLink: output.url });
-      res.status(200).send(responseBody);
+      res.status(200).json({ downloadLink: output.url });
     } catch (error) {
-      // Mengonversi objek JSON menjadi string untuk pesan kesalahan
-      const errorBody = JSON.stringify({ error: 'Error downloading video' });
-      res.status(500).send(errorBody);
+      res.status(500).json({ error: 'Error downloading video' });
     }
   } else {
-    // Mengonversi objek JSON menjadi string untuk pesan kesalahan
-    const errorBody = JSON.stringify({ error: 'Method not allowed' });
-    res.status(405).send(errorBody);
+    res.status(405).json({ error: 'Method not allowed' });
   }
 }
