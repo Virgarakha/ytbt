@@ -15,7 +15,7 @@ const Downloader = () => {
     setDownloadLink('');
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/download', { url });
+      const response = await axios.post('/api/download', { url });
       setDownloadLink(response.data.downloadLink);
     } catch (err) {
       setError('Failed to fetch the download link. Please try again.');
@@ -32,7 +32,7 @@ const Downloader = () => {
             <h1 className="">YouTube Video Downloader</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="">
-                <Form.Label>Enter YouTube Video URL - By pt.rr and bakol tugas</Form.Label>
+                <Form.Label>Enter YouTube Video URL</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter URL"
